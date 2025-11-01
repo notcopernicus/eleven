@@ -11,6 +11,6 @@ document.body.addEventListener('click', () => {
     } else if (window.location.pathname === '/page3.html') {
         window.location.href = 'page4.html';
     } else if (window.location.pathname =='/page4.html')
-        window.location.href = 'page1.html';
+        window.location.href = 'index.html';
 });
 
