@@ -17,14 +17,12 @@ body.fade-out {
 }
 
 div {
-    padding: 111px;
-    padding-bottom:555px;
+    padding: 100px;
+    padding-bottom:200px;
     font-size: 22px;
 }
 
-.note {
-
-    bottom: 20px; 
+.note { 
     width: 100%;
     text-align: center;
     font-size: 12px;
