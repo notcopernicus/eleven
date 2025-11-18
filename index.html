@@ -3,16 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>sixtrades - Quantitative Investment Fund</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(white 1px, transparent 1px),
+                linear-gradient(90deg, white 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.02;
+        }
+        
+        .page-indicator {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .page-dot {
+            width: 8px;
+            height: 8px;
+            border: 1px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+    </style>
 </head>
-
-<body>
-    <div>
-        <div>
-            <h1>sixtrades</h1>
-            <p>is a quantitative investing fund focused on deriving and executing profitable trading strategies using cutting-edge technologies.</p>
+<body class="bg-black text-white relative overflow-x-hidden">
+    <!-- Grid Background -->
+    <div class="fixed inset-0 grid-bg pointer-events-none"></div>
+    
+    <!-- Page Indicators -->
+    <div class="page-indicator">
+        <div class="page-dot active" data-page="0"></div>
+        <div class="page-dot" data-page="1"></div>
+        <div class="page-dot" data-page="2"></div>
     </div>
-    <script src="script.js"></script>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-50 border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-lg font-semibold tracking-tight cursor-pointer" onclick="goToPage(0)">sixtrades</h1>
+                <div class="flex gap-8">
+                    <a onclick="goToPage(0)" class="text-xs font-light hover:font-normal transition-all uppercase tracking-widest cursor-pointer">About</a>
+                    <a onclick="goToPage(1)" class="text-xs font-light hover:font-normal transition-all uppercase tracking-widest cursor-pointer">Careers</a>
+                    <a onclick="goToPage(2)" class="text-xs font-light hover:font-normal transition-all uppercase tracking-widest cursor-pointer">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page 1: About -->
+    <section class="page" id="page-0">
+        <div class="max-w-3xl mx-auto px-6 relative z-10">
+            <div class="text-center">
+                <h1 class="text-7xl md:text-8xl font-light mb-8 tracking-tight border-b border-white inline-block pb-2">
+                    sixtrades
+                </h1>
+                
+                <div class="content-hidden fade-in space-y-6 mt-12">
+                    <p class="text-lg md:text-xl font-light leading-relaxed">
+                        A quantitative investing fund focused on deriving and executing profitable trading strategies using cutting-edge technologies.
+                    </p>
+                    
+                    <div class="border-l-2 border-white pl-4 mt-8">
+                        <p class="text-sm font-light leading-relaxed">
+                            If you are interested in being a part of the fund, you should speak to someone on the board of directors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Page 2: Careers -->
+    <section class="page border-t border-white/10" id="page-1">
+        <div class="max-w-3xl mx-auto px-6 w-full relative z-10">
+            <div class="mb-12">
+                <h2 class="text-5xl font-light mb-4 tracking-tight">Careers</h2>
+                <p class="text-sm font-light">
+                    If you are interested in working with us, explore our roles below:
+                </p>
+            </div>
+
+            <div class="space-y-10">
+                <!-- Analyst -->
+                <div class="border-l border-white pl-6">
+                    <h3 class="text-2xl font-normal mb-4 tracking-tight">Analyst</h3>
+                    <ul class="space-y-2 font-light text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1 h-1 bg-white flex-shrink-0"></span>
+                            <span>Conduct global market research on a universe of securities.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1 h-1 bg-white flex-shrink-0"></span>
+                            <span>Perform technical analysis, discuss findings & anticipate news.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1 h-1 bg-white flex-shrink-0"></span>
+                            <span>Find new creative signals in financial market & economic data.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Engineer -->
+                <div class="border-l border-white pl-6">
+                    <h3 class="text-2xl font-normal mb-4 tracking-tight">Engineer</h3>
+                    <ul class="space-y-2 font-light text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1 h-1 bg-white flex-shrink-0"></span>
+                            <span>Write high performant industry code (C++, Python, Rust).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1 h-1 bg-white flex-shrink-0"></span>
+                            <span>Maintain & iterate systems during trading sessions (NYSE, London).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1 h-1 bg-white flex-shrink-0"></span>
+                            <span>Develop internal tooling, dashboards, & automation services.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Contact -->
+    <section class="page border-t border-white/10" id="page-2">
+        <div class="max-w-3xl mx-auto px-6 w-full relative z-10">
+            <h2 class="text-5xl font-light mb-8 tracking-tight">Contact</h2>
+            
+            <div class="border border-white p-8">
+                <p class="text-xs font-light mb-3 uppercase tracking-widest">All inquiries can be sent to:</p>
+                <a href="mailto:mhcopernic@gmail.com" class="text-xl font-normal block hover:bg-white hover:text-black transition-all p-4 border border-white">
+                    mhcopernic@gmail.com
+                </a>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-xs font-light tracking-widest uppercase opacity-50">&copy; 2024 sixtrades</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let contentRevealed = false;
+        
+        // Reveal content on first click/scroll
+        function revealContent() {
+            if (!contentRevealed) {
+                contentRevealed = true;
+                document.querySelectorAll('.content-hidden').forEach(el => {
+                    el.classList.add('visible');
+                    el.classList.remove('content-hidden');
+                });
+            }
+        }
+        
+        // Click anywhere to reveal
+        document.addEventListener('click', revealContent);
+        
+        // Scroll to reveal
+        let scrollTimeout;
+        document.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(revealContent, 100);
+        });
+        
+        // Navigation function
+        function goToPage(pageNum) {
+            const page = document.getElementById(`page-${pageNum}`);
+            page.scrollIntoView({ behavior: 'smooth' });
+            updatePageIndicators(pageNum);
+        }
+        
+        // Update page indicators
+        function updatePageIndicators(activePage) {
+            document.querySelectorAll('.page-dot').forEach((dot, index) => {
+                if (index === activePage) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Page indicator click handlers
+        document.querySelectorAll('.page-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const pageNum = parseInt(dot.getAttribute('data-page'));
+                goToPage(pageNum);
+            });
+        });
+        
+        // Update indicators on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const pageId = entry.target.id;
+                    const pageNum = parseInt(pageId.split('-')[1]);
+                    updatePageIndicators(pageNum);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.page').forEach(page => {
+            observer.observe(page);
+        });
+    </script>
 </body>
-</htm
+</html>
