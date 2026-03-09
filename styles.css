@@ -20,7 +20,7 @@
 }
 
 body.fade-out {
-    opacity: 1;
+    opacity: 0;
 }
 
 div {
@@ -33,4 +33,19 @@ div {
     width: 100%;
     text-align: center;
     font-size: 12px;
+}
+
+.site-nav {
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+    text-align: center;
+    pointer-events: auto;
+}
+
+.site-nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
 }
