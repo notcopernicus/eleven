@@ -9,14 +9,14 @@ document.body.addEventListener('click', (e) => {
 
     // normalize to the filename (handle '/', '/index.html', and paths with folders)
     const lastSegment = window.location.pathname.split('/').pop();
-    const page = lastSegment === '' ? '1.html' : lastSegment;
+    const page = lastSegment === '' ? 'index.html' : lastSegment;
 
     const nextMap = {
-        '1.html': '2.html',
-        '2.html': '1.html',
+        'index.html': '2.html',
+        '2.html': 'index.html',
     };
 
-    const next = nextMap[page] || '1.html';
+    const next = nextMap[page] || 'index.html';
     window.location.href = next;
 });
 
